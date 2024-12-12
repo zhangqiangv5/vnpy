@@ -8,7 +8,7 @@ from vnpy.trader.object import BarData, Interval, Exchange
 
 
 class BarCheck:
-    """用于删除非交易时间段的1分钟K线"""
+    """用于删除非交易时间段的1分钟K线使用"""
     def __init__(self):
         self.database = get_database()
         self.bars: List[BarData] = []
