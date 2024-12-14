@@ -156,3 +156,14 @@ class Interval(Enum):
     DAILY = "d"
     WEEKLY = "w"
     TICK = "tick"
+    FIVE = "5m"
+    FIFTEEN = "15m"
+    TWENTY = "20m"
+    THIRTY = "30m"
+    SIXTY = "60m"
+
+def get_interval_by_value(enum_class, target_value):
+    for member in enum_class:
+        if member.value == target_value:
+            return member.name
+    return None  # 如果没找到则返回None

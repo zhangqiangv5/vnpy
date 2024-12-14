@@ -15,7 +15,7 @@ import numpy as np
 import talib
 
 from .object import BarData, TickData
-from .constant import Exchange, Interval
+from .constant import Exchange, Interval, get_interval_by_value
 from .locale import _
 
 if sys.version_info >= (3, 9):
@@ -310,6 +310,8 @@ class BarGenerator:
 
         # Check if window bar completed
         if not (bar.datetime.minute + 1) % self.window:
+            interval = get_interval_by_value(Interval, f"{self.window}m")
+            self.window_bar.interval = Interval.__members__.get(interval)
             self.on_window_bar(self.window_bar)
             self.window_bar = None
 
